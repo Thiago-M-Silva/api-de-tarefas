@@ -14,4 +14,5 @@ public record PessoaResponseDTO(Long id, String nome, String departamento, List<
                 pessoa.getTarefas()
         );
     }
+
 }

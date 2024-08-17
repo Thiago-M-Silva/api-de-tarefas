@@ -30,6 +30,7 @@ public class Pessoa {
         this.tarefas = data.tarefas();
     }
 
+
     public void addPessoa(Tarefa tarefa){
         tarefas.add(tarefa);
         tarefa.setPessoa(this);

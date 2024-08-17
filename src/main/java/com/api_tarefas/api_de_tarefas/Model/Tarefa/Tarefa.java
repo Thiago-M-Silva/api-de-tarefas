@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Table(name = "tarefa")
 @Entity
 @Getter
@@ -20,13 +22,13 @@ public class Tarefa {
     private Long id;
     private String titulo;
     private String descricao;
-    private Long prazo;
+    private Date prazo;
     private String departamento;
     private Float duracao;
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-    private String status; //ativo ou finalizado
+    private Boolean status; //ativo ou finalizado
 
     public Tarefa(TarefaRequestDTO data){
         this.titulo = data.titulo();
