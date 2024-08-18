@@ -20,26 +20,32 @@ public class PessoaController {
     public List<PessoaResponseDTO> tempMedTarefa(){
         return pessoaRep.listPessoaHoraTarefa();
     }
-    @GetMapping("/gastos")
-    public List<PessoaResponseDTO> listPessoa(String nome, Long inicio, Long fim){
+
+    @GetMapping("/gastos") //nao entendi como deveria receber os dados, entao o fiz para que o receba no body
+    public List<PessoaResponseDTO> listPessoa(@RequestBody String nome, @RequestBody Long inicio, @RequestBody Long fim){
         return pessoaRep.getMediaTarefa(nome, inicio, fim);
     }
+
     @PostMapping
     public void addPessoa(@RequestBody PessoaRequestDTO data){
         Pessoa pessoaData = new Pessoa(data);
         pessoaRep.save(pessoaData);
     }
+
     @PutMapping("/{id}")
     public void updatePessoa(@PathVariable("id") Long id, @RequestBody PessoaRequestDTO data){
         Pessoa pessoaData = new Pessoa(data);
         pessoaRep.deleteById(data.id());
         pessoaRep.save(pessoaData);
     }
+
     @DeleteMapping("/{id}")
     public void removePessoa(@PathVariable("id") Long id){
         pessoaRep.deleteById(id);
     }
 
+
+    //tratei departamento como um atributo e nao uma classe, por isso fiz seu endpoint junto ao de pessoas
     @GetMapping("/departamentos")
     public List<DepartamentoDTO> listarDepartamentosComQuantidade() {
         return pessoaRep.listarDepartamentos();

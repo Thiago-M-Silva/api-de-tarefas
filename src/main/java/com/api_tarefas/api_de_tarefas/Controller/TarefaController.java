@@ -26,7 +26,8 @@ public class TarefaController {
     public List<Tarefa> listaTarefaVazia(){
         return tarefaRep.get3Pendentes();
     }
-    @PostMapping
+
+    @PostMapping //cria tarefas sem pessoas alocadas e com o satus ativo
     public void addTarefa(@RequestBody TarefaRequestDTO data){
         Tarefa tarefaData = new Tarefa(data);
         tarefaData.setPessoa(null);
@@ -34,7 +35,7 @@ public class TarefaController {
         tarefaRep.save(tarefaData);
     }
 
-    @PutMapping("/finalizar/{id}")
+    @PutMapping("/finalizar/{id}") //altera o status da tarefa para finalizado (false)
     public void finalizaTarefa(){
         Tarefa tarefaData = new Tarefa();
         tarefaData.setStatus(false);

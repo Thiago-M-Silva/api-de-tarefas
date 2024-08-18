@@ -28,7 +28,7 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-    private Boolean status; //ativo ou finalizado
+    private Boolean status; //true = ativo e false = finalizado
 
     public Tarefa(TarefaRequestDTO data){
         this.titulo = data.titulo();
